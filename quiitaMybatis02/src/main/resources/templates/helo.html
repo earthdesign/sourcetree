@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:text="${title}"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+body {
+    padding: 10px;
+    color: #666;
+}
+
+th {
+    padding: 10px; 0 px;
+    background: #666;
+    color: white;
+}
+
+td {
+    padding: 10px; 0 px;
+    background: #ddd;
+    color: 333;
+}
+</style>
+</head>
+<body>
+    <h1 th:text="${errormessege}"></h1>
+    <h1 th:text="${title}"></h1>
+    <p th:text="${message}"></p>
+    <form method="post" action="/">
+        <input type="text" name="findvalue" th:value="${findvalue}" />
+        <input type="submit" value="検索" /> <input type="text"
+            name="updatename" th:value="${updatename}" /> <input
+            type="submit" value="更新" /> <input type="text"
+            name="deletename" th:value="${deletename}" /> <input
+            type="submit" value="削除" />
+    </form>
+    <hr />
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>MAIL</th>
+            <th>TEL</th>
+        </tr>
+        <tr th:each="entity : ${data}">
+            <td th:text="${entity.id}"></td>
+            <td th:text="${entity.name}"></td>
+            <td th:text="${entity.mail}"></td>
+            <td th:text="${entity.tel}"></td>
+        </tr>
+    </table>
+</body>
+</html>

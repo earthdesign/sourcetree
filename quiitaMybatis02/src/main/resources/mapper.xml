@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao">
+    <resultMap id="myDataEntityResultMap" type="com.amano.web.model.MyDataModel">
+        <id property="id" column="ID" />
+        <result property="name" column="NAME" />
+        <result property="mail" column="MAIL" />
+        <result property="tel" column="TEL" />
+    </resultMap>
+    <select id="selectMyEntity" parameterType="int"
+        resultMap="myDataEntityResultMap">
+        select * from myentity where id = #{id}
+    </select>
+    <select id="selectListMyEntity" parameterType="string"
+        resultMap="myDataEntityResultMap">
+        select * from myentity where name = #{name}
+    </select>
+    <insert id="insertMyEntity" parameterType="com.amano.web.model.MyDataModel">
+        INSERT
+        INTO myentity(id,name,mail,tel)
+        VALUES (#{id}, #{name}, #{mail}, #{tel})
+    </insert>
+    <delete id="deleteMyEntity" parameterType="string">
+        DELETE from myentity where name = #{name}
+    </delete>
+    <update id="updateMyEntity" parameterType="com.amano.web.model.MyDataModel">
+        UPDATE myentity
+           SET name = #{name}
+         WHERE id = #{id}
+    </update>
+    <update id="updateNameMyEntity" parameterType="com.amano.web.model.MyDataModel">
+        UPDATE myentity
+           SET name = #{name}
+         WHERE id = #{id}
+    </update>
+    <!-- <select id="selectMyEntity" parameterType="com.tuyano.web.model.MyDataEntity"
+        resultMap="myDataEntityResultMap"> select * from myentity <where> <if test="name
+        != null"> name = #{name} </if> <if test="mail != null"> AND mail = #{mail}
+        </if> <if test="tel != null"> AND tel = #{tel} </if> </where> </select> <resultMap
+        id="myDataEntityResultMap" type="com.tuyano.web.model.MyDataEntity"> <id
+        property="id" column="ID" /> <result property="name" column="NAME" /> <result
+        property="mail" column="MAIL" /> <result property="tel" column="TEL" /> </resultMap> -->
+    <!-- <select id="selectMyEntity" resultMap="myDataEntityResultMap"> SELECT
+        * FROM myentity me inner join yourentity ye on me.id = ye.id </select> <resultMap
+        id="myDataEntityResultMap" type="com.tuyano.web.model.MyDataEntity"> <id
+        property="id" column="ID" /> <result property="name" column="NAME" /> <result
+        property="mail" column="MAIL" /> <result property="tel" column="TEL" /> <collection
+        property="yourDataEntityList" ofType="YourDataEntity"> <id property="id"
+        column="ID" /> <result property="name" column="NAME" /> <result property="mail"
+        column="MAIL" /> <result property="tel" column="TEL" /> </collection> </resultMap> -->
+</mapper>

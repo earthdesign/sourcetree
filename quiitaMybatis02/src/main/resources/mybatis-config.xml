@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias alias="MyDataEntity" type="com.amano.web.model.MyDataModel" />
+    </typeAliases>
+    <environments default="sample_id">
+        <environment id="sample_id">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver" />
+                <property name="url"
+                    value="jdbc:mysql://localhost:3306/data1" />
+                <property name="username" value="root" />
+                <property name="password" value="springuser" />
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.tuyano.web.dao" /> </bean> -->
+    <!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.tuyano.web.dao" />
+    </bean> -->
+    <!-- <bean class="org.mybatis.spring.mapper.MapperFactoryBean"> <property
+        name="mapperInterface" value="com.tuyano.web.dao.MyDataEntityMapper" /> <property
+        name="sqlSessionFactory" ref="sqlSessionFactory" /> </bean> -->
+    <mappers>
+        <mapper resource="mapper.xml" />
+    </mappers>
+</configuration>
